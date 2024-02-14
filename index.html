@@ -14,7 +14,8 @@
             </div>
             <div class = "buttons">
                 <button class="btn" id = "yesButton" onclick="nextPage()">Yes</button>
-                <button class="btn" id="noButton" onmouseover="moveButton()">No</button>
+                <button class="btn" id="noButton" onmouseover="moveButton()" ontouchmove="moveButtonDebounced()">No</button>
+
                 <script>
                     function nextPage() {
                         window.location.href = "yes.html";
@@ -34,7 +35,18 @@
                         button.style.left = `${x}px`;
                         button.style.top = `${y}px`;
                     }
-                </script> 
+                
+                    function debounce(func, wait) {
+                        let timeout;
+                        return function() {
+                            clearTimeout(timeout);
+                            timeout = setTimeout(func, wait);
+                        };
+                    }
+                
+                    const moveButtonDebounced = debounce(moveButton, 200);
+                </script>
+                
             </div>
         </div>
        
