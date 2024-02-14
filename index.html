@@ -16,16 +16,21 @@
                 <button class="btn" id = "yesButton" onclick="nextPage()">Yes</button>
                 <button class="btn" id="noButton" onmouseover="moveButton()">No</button>
                 <script>
-                    function nextPage() {
-                        window.location.href = "yes.html";
-                    }
-                    
                     function moveButton() {
-                        var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth);
-                        var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight);
-                        document.getElementById('noButton').style.left = `${x}px`;
-                        document.getElementById('noButton').style.top = `${y}px`;
-                    }
+                        var button = document.getElementById('noButton');
+                        var buttonWidth = button.offsetWidth;
+                        var buttonHeight = button.offsetHeight;
+
+                        var maxX = window.innerWidth - buttonWidth;
+                        var maxY = window.innerHeight - buttonHeight;
+
+                        var x = Math.random() * maxX;
+                        var y = Math.random() * maxY;
+
+                        button.style.left = `${x}px`;
+                        button.style.top = `${y}px`;
+}
+
                 </script> 
             </div>
         </div>
